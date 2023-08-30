@@ -1,0 +1,46 @@
+{% extends 'home.html' %} 
+
+{% block content%}
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<h1 style="background-color: green; color: white; width: 50%; margin: 5px auto;">Tasks</h1>
+
+<br/>
+<div style = 'width: 80%; margin:auto'>
+   <table class="table table-bordered table-dark">
+    <thead >
+      <tr  style="text-align: center;" >
+        <th scope="col">Titel</th>
+        <th scope="col">Discription</th>
+        <th scope="col">Statas</th>
+        
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for fm in  data %} 
+      <tr style="text-align: center;">
+        <td>{{fm.titel}}</td>
+        <td>{{fm.discription}}</td>
+        {% if fm.statas != "on" %}
+           <td>incomplete</td>
+        {% else %}
+          <td>complete</td>
+        {% endif %}
+       
+        <td>
+            <a href = {% url 'edit_list' fm.id %} class="btn btn-warning" type="submit" style="margin-right: 5px;">Edit</a>
+            
+            <a href = {% url 'delete_list' fm.id %}  class="btn btn-danger" type="submit" style="margin-right: 5px;">Delete</a>
+            <a href = {% url 'complete_list' fm.id %}  class="btn btn-info" type="submit">Completa</a>
+        </td> 
+      {% endfor %}
+    </tbody>
+  </table> 
+</div>
+
+{% endblock %}
