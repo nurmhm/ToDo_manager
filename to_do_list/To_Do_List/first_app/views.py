@@ -1,14 +1,4 @@
-# def store_book(request):
-#     if request.method == 'POST':
-#         book = BookStoreForm(request.POST)
-#         if book.is_valid():
-#             book.save(commit=True)
-#             print(book.cleaned_data)
-#             return redirect('show_books')
-            
-#     else:
-#         book = BookStoreForm()
-#     return render(request, 'store_book.html', {'form':book})
+
 
 from django.shortcuts import render,redirect 
 from first_app.forms import ToDoform
